@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { AppBar, Box, Typography, IconButton, TextField } from "@mui/material";
+import {
+  AppBar,
+  Box,
+  Typography,
+  IconButton,
+  TextField,
+  Tooltip,
+} from "@mui/material";
 import WestIcon from "@mui/icons-material/West";
 import SearchIcon from "@mui/icons-material/Search";
 import CancelIcon from "@mui/icons-material/Cancel";
@@ -28,22 +35,30 @@ export default function Appbar({ setSearchText }) {
             alignItems: "center",
           }}
         >
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <WestIcon />
-          </IconButton>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1, fontFamily: "Titillium Web" }}
-          >
-            Romantic Comedy
-          </Typography>
+          <Tooltip title="Back Navigation">
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              sx={{ ml: 0, mr: 0 }}
+            >
+              <WestIcon />
+            </IconButton>
+          </Tooltip>
+          <Tooltip title="App Title">
+            <Typography
+              variant="h6"
+              component="div"
+              sx={{
+                flexGrow: 1,
+                fontFamily: "Titillium Web",
+                cursor: "default",
+              }}
+            >
+              Romantic Comedy
+            </Typography>
+          </Tooltip>
         </Box>
         {showSearchBox ? (
           <Box
@@ -67,19 +82,21 @@ export default function Appbar({ setSearchText }) {
                 handleSearchText(e);
               }}
             />
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              sx={{ mr: 2 }}
-              onClick={() => {
-                setShowSearchBox(false);
-                setSearchText("");
-              }}
-            >
-              <CancelIcon />
-            </IconButton>
+            <Tooltip title="Search">
+              <IconButton
+                size="large"
+                edge="start"
+                color="inherit"
+                aria-label="menu"
+                sx={{ mr: 2 }}
+                onClick={() => {
+                  setShowSearchBox(false);
+                  setSearchText("");
+                }}
+              >
+                <CancelIcon />
+              </IconButton>
+            </Tooltip>
           </Box>
         ) : (
           <IconButton
