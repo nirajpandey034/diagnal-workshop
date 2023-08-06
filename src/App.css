@@ -1,7 +1,14 @@
 .App {
   text-align: center;
+  background-color: #171717;
+  color: #ffffff;
 }
 
+/* Hide scrollbar for IE, Edge and Firefox */
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;

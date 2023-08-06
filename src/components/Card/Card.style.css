@@ -1,0 +1,28 @@
+.progress {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -100px;
+  margin-left: -100px;
+}
+
+.pokemonCardsArea {
+  padding-top: 30px;
+  width: 100%;
+}
+
+.cardTitle {
+  margin-right: auto !important;
+  margin-left: 0 !important;
+  margin-top: 0.5rem !important;
+  font-family: "Titillium Web" !important;
+}
+
+.container::-webkit-scrollbar {
+  display: none; /* Safari and Chrome browsers */
+}
+
+.container {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* mozilla */
+}
