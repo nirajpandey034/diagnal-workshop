@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Grid, Container } from "@mui/material";
 import { CircularProgress } from "@mui/material";
-import InfiniteScroll from "react-infinite-scroll-component";
+// import InfiniteScroll from "react-infinite-scroll-component";
+import InfiniteScroll from "react-infinite-scroller";
 
 import Card from "./Card";
 import "./Card.style.css";
@@ -57,25 +58,24 @@ export default function CardContainer({ searchText = "" }) {
       id="scrollableDiv"
       className="container"
       sx={{
-        overflowY: "auto",
+        overflow: "auto",
         height: "100vh",
-        // overscrollBehavior: "none",
+        pt: 2,
       }}
       maxWidth="xl"
     >
       {scrollData.length > 0 ? (
         <InfiniteScroll
-          dataLength={scrollData.length}
-          next={handleOnRowsScrollEnd}
+          pageStart={1}
+          loadMore={handleOnRowsScrollEnd}
           hasMore={page < 3}
-          scrollThreshold={1}
-          loader={<h4>Loading...</h4>}
-          style={{
-            overflow: "unset",
-            display: "flex",
-            flexDirection: "column-reverse",
-          }}
-          scrollableTarget="scrollableDiv"
+          loader={
+            <div className="loader" key={0}>
+              Loading ...
+            </div>
+          }
+          useWindow={false}
+          // threshold={1}
         >
           <Grid container spacing={2} className="pokemonCardsArea">
             {scrollData.map((item, index) => (
